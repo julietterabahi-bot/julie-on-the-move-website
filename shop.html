@@ -300,6 +300,7 @@
       .package-grid { grid-template-columns: 1fr; }
       .package-card { grid-template-columns: 1fr; }
       .package-card-img { min-height: 200px; }
+      #section-packages > div { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 600px) {
       .ebook-grid { grid-template-columns: 1fr; }
@@ -381,7 +382,7 @@
             <!-- Maldives Ebook -->
             <div class="card ebook-card">
               <div class="card-img">
-                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(160deg,#8bb8c4,#4a8090);">Maldives Cover</div>
+                <img src="images/maldives-bungalows.jpg" alt="Maldives Insider Guide" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               </div>
               <div class="card-body">
                 <div class="card-meta">
@@ -415,7 +416,7 @@
                 <p class="card-desc">Julie is working on her Bali guide — follow along on Instagram to know the moment it drops.</p>
                 <div class="card-price-row">
                   <span class="price">$TBA</span>
-                  <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-secondary">Follow to Get Notified</a>
+                  <a href="https://www.instagram.com/itsjulieonthemove" target="_blank" class="btn btn-secondary">Follow to Get Notified</a>
                 </div>
               </div>
             </div>
@@ -431,7 +432,7 @@
                 <p class="card-desc">Julie travels constantly. Every trip becomes a guide. Stay tuned for new destinations regularly.</p>
                 <div class="card-price-row">
                   <span class="price">$TBA</span>
-                  <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-secondary">Stay Tuned</a>
+                  <a href="https://www.instagram.com/itsjulieonthemove" target="_blank" class="btn btn-secondary">Stay Tuned</a>
                 </div>
               </div>
             </div>
@@ -439,57 +440,70 @@
           </div>
         </div>
 
-        <!-- PACKAGES -->
+        <!-- PACKAGES — Enquiry Form -->
         <div class="shop-section" id="section-packages">
           <div class="shop-section-header">
             <div>
               <h2>Travel Packages</h2>
-              <p>Curated trips with Julie's personal touch — for Gaafaru Island, Maldives</p>
+              <p>Curated Maldives trips tailored to your budget — tell Julie what you're looking for</p>
             </div>
-            <span class="tag tag-green">Limited Availability</span>
+            <span class="tag tag-green">Personalised</span>
           </div>
-          <div class="package-grid">
 
-            <div class="package-card">
-              <div class="package-card-img">
-                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(170deg,#8bb8c4,#2c5a6a);">Maldives Package</div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:start;">
+
+            <!-- Left: Package info -->
+            <div style="background:#fff; border-radius:16px; overflow:hidden; box-shadow:0 2px 16px rgba(44,36,22,0.07);">
+              <div style="position:relative; min-height:240px;">
+                <img src="images/maldives-package.jpg" alt="Maldives travel package" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
               </div>
-              <div class="package-card-body">
-                <div>
-                  <span class="tag tag-green">Travel Package</span>
-                  <h3>The Maldivian Escape</h3>
-                  <p>A fully curated trip to Gaafaru Island designed around how Julie herself travels — authentic, unhurried, and unforgettable. Includes handpicked accommodation, activity suggestions, and Julie's personal insider notes.</p>
-                  <ul class="package-includes">
-                    <li class="package-includes-title">What's included:</li>
-                    <li>Curated accommodation options</li>
-                    <li>Activity & excursion guide</li>
-                    <li>Free Maldives Ebook included</li>
-                    <li>Personalised pre-trip consultation</li>
-                    <li>24/7 WhatsApp support during trip</li>
-                  </ul>
-                </div>
-                <div class="package-price-row">
-                  <div class="package-price">From $899 <span>/ person</span></div>
-                  <a href="mailto:julietterabahi@gmail.com?subject=Maldivian Escape Package Enquiry" class="btn btn-green">Enquire Now</a>
-                </div>
+              <div style="padding:2rem;">
+                <span class="tag tag-green" style="margin-bottom:0.75rem; display:inline-block;">The Maldivian Escape</span>
+                <h3 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:700; color:var(--brown); margin-bottom:0.75rem;">Your trip, your budget.</h3>
+                <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7; margin-bottom:1.25rem;">Julie offers two curated Gaafaru Island experiences — one for travellers on a budget and one for those who want the full luxury treatment. Fill out the form and she'll get back to you with the option that fits.</p>
+                <ul class="package-includes">
+                  <li class="package-includes-title">Every package includes:</li>
+                  <li>Handpicked accommodation options</li>
+                  <li>Activity & excursion guide</li>
+                  <li>Free Maldives Ebook included</li>
+                  <li>Personalised pre-trip consultation</li>
+                  <li>24/7 WhatsApp support during trip</li>
+                </ul>
               </div>
             </div>
 
-            <div class="package-card" style="opacity:0.65;">
-              <div class="package-card-img">
-                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(170deg,#b8a87a,#6a5030);">Coming Soon</div>
-              </div>
-              <div class="package-card-body">
+            <!-- Right: Contact form -->
+            <div style="background:#fff; border-radius:16px; padding:2.5rem; box-shadow:0 2px 16px rgba(44,36,22,0.07);">
+              <p class="section-label" style="margin-bottom:0.5rem;">Get In Touch</p>
+              <h3 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:700; color:var(--brown); margin-bottom:0.25rem;">Tell me about your trip</h3>
+              <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:1.5rem; line-height:1.6;">Share your interests and budget range, and I'll personally send you the best package option for you.</p>
+
+              <form id="packageForm" onsubmit="handlePackageEnquiry(event)" style="display:flex; flex-direction:column; gap:1rem;">
                 <div>
-                  <span class="tag">Coming Soon</span>
-                  <h3>More Destinations On The Way</h3>
-                  <p>Julie is constantly scouting new locations to turn into curated packages. Follow her journey on Instagram to find out where she's heading next.</p>
+                  <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Your Name</label>
+                  <input type="text" name="name" required placeholder="e.g. Sarah" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none; transition:border 0.2s;" onfocus="this.style.borderColor='var(--sand)'" onblur="this.style.borderColor='var(--beige-mid)'" />
                 </div>
-                <div class="package-price-row">
-                  <div class="package-price">TBA</div>
-                  <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-secondary">Follow Along</a>
+                <div>
+                  <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Email</label>
+                  <input type="email" name="email" required placeholder="your@email.com" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none; transition:border 0.2s;" onfocus="this.style.borderColor='var(--sand)'" onblur="this.style.borderColor='var(--beige-mid)'" />
                 </div>
-              </div>
+                <div>
+                  <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Budget Range</label>
+                  <select name="budget" required style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); background:#fff; outline:none; cursor:pointer;">
+                    <option value="" disabled selected>Select your budget</option>
+                    <option value="budget">Budget-friendly</option>
+                    <option value="mid">Mid-range</option>
+                    <option value="luxury">Luxury</option>
+                    <option value="unsure">Not sure yet — surprise me</option>
+                  </select>
+                </div>
+                <div>
+                  <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">What are you most interested in?</label>
+                  <textarea name="interests" rows="3" placeholder="e.g. diving, relaxing on the beach, local food, fitness activities..." style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none; resize:vertical; transition:border 0.2s;" onfocus="this.style.borderColor='var(--sand)'" onblur="this.style.borderColor='var(--beige-mid)'"></textarea>
+                </div>
+                <button type="submit" class="btn btn-green" style="width:100%; text-align:center; margin-top:0.5rem;">Send Enquiry</button>
+              </form>
+              <p id="formSuccess" style="display:none; text-align:center; color:var(--green); font-weight:700; font-size:0.88rem; margin-top:1.25rem;">Thanks! Julie will be in touch soon.</p>
             </div>
 
           </div>
@@ -529,7 +543,7 @@
     <div class="footer-bottom">
       <p>© 2026 Julie On The Move. All rights reserved.</p>
       <div class="social-links">
-        <a href="https://www.instagram.com/itsjulieonthego" target="_blank">@itsjulieonthego</a>
+        <a href="https://www.instagram.com/itsjulieonthemove" target="_blank">@itsjulieonthemove</a>
         <a href="https://www.instagram.com/MyMaldivianEscape" target="_blank">@MyMaldivianEscape</a>
       </div>
     </div>
@@ -556,6 +570,28 @@
         sectionPackages.style.display = '';
         if (banner) banner.style.display = 'none';
       }
+    }
+
+    function handlePackageEnquiry(e) {
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value;
+      const email = form.email.value;
+      const budget = form.budget.value;
+      const interests = form.interests.value;
+
+      const subject = encodeURIComponent('Maldives Travel Package Enquiry from ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Budget: ' + budget + '\n' +
+        'Interests: ' + interests
+      );
+
+      window.location.href = 'mailto:julietterabahi@gmail.com?subject=' + subject + '&body=' + body;
+
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
     }
   </script>
 </body>
