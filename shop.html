@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Julie On The Move</title>
+  <meta name="description" content="Browse Julie's travel ebooks and Maldives packages. Insider guides for real travellers." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- SHOP PAGE SPECIFIC ---- */
+
+    .shop-hero {
+      background: var(--brown);
+      padding: 5rem 5% 4rem;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .shop-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 60% 50%, rgba(196,149,106,0.2) 0%, transparent 65%);
+    }
+    .shop-hero-inner { position: relative; z-index: 1; }
+    .shop-hero .section-label { color: var(--sand); }
+    .shop-hero .section-title { color: var(--warm-white); margin: 0 auto 1rem; }
+    .shop-hero .section-subtitle { color: rgba(250,247,242,0.65); margin: 0 auto; }
+
+    /* Filter tabs */
+    .shop-filters {
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--beige-mid);
+      padding: 0 5%;
+      position: sticky;
+      top: var(--nav-height);
+      z-index: 100;
+    }
+    .shop-filters-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+    }
+    .filter-btn {
+      padding: 1.1rem 1.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover { color: var(--brown); }
+    .filter-btn.active {
+      color: var(--sand-dark);
+      border-bottom-color: var(--sand);
+    }
+
+    /* Shop main grid */
+    .shop-main {
+      padding: 4rem 5%;
+      background: var(--warm-white);
+    }
+    .shop-main-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .shop-section { margin-bottom: 4rem; }
+    .shop-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--beige-mid);
+    }
+    .shop-section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .shop-section-header p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Ebook grid */
+    .ebook-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .ebook-card .card-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--beige-light);
+      position: relative;
+    }
+    .ebook-card .card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .ebook-card:hover .card-img img { transform: scale(1.05); }
+    .ebook-card .card-img .img-placeholder {
+      position: absolute; inset: 0;
+    }
+    .ebook-card .card-body {
+      padding: 1.25rem 1.5rem 1.75rem;
+    }
+    .ebook-card .card-meta {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .ebook-card .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .ebook-card .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.65;
+    }
+    .ebook-card .card-features {
+      margin-bottom: 1.25rem;
+    }
+    .ebook-card .card-features li {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .ebook-card .card-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--sand);
+      font-weight: 700;
+    }
+    .ebook-card .card-price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid var(--beige-mid);
+    }
+    .ebook-card .price {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    /* Package cards */
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+    .package-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 16px rgba(44,36,22,0.07);
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .package-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(44,36,22,0.12);
+    }
+    .package-card-img {
+      background: var(--beige-light);
+      position: relative;
+      min-height: 300px;
+    }
+    .package-card-img .img-placeholder {
+      position: absolute; inset: 0;
+    }
+    .package-card-body {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .package-card-body .tag { margin-bottom: 0.75rem; display: inline-block; }
+    .package-card-body h3 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.75rem;
+    }
+    .package-card-body p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .package-includes {
+      margin-bottom: 1.5rem;
+    }
+    .package-includes-title {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .package-includes li {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      padding: 0.2rem 0;
+      padding-left: 1rem;
+      position: relative;
+    }
+    .package-includes li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+    .package-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .package-price {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+    .package-price span {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    /* Bundle / promo banner */
+    .bundle-banner {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 100%);
+      border-radius: 16px;
+      padding: 2.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .bundle-banner-text {}
+    .bundle-banner-text p {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.65);
+      margin-bottom: 0.5rem;
+    }
+    .bundle-banner-text h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--warm-white);
+      margin-bottom: 0.4rem;
+    }
+    .bundle-banner-text .bundle-desc {
+      font-size: 0.88rem;
+      color: rgba(250,247,242,0.75);
+    }
+    .bundle-banner .btn {
+      white-space: nowrap;
+      background: var(--warm-white);
+      color: var(--green-dark);
+      flex-shrink: 0;
+    }
+    .bundle-banner .btn:hover {
+      background: var(--beige-light);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      .ebook-grid { grid-template-columns: repeat(2, 1fr); }
+      .package-grid { grid-template-columns: 1fr; }
+      .package-card { grid-template-columns: 1fr; }
+      .package-card-img { min-height: 200px; }
+    }
+    @media (max-width: 600px) {
+      .ebook-grid { grid-template-columns: 1fr; }
+      .bundle-banner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-name">Julie On The Move</span>
+      <span class="logo-tagline">Travel · Fitness · Ebooks</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html" class="active">Shop</a></li>
+      <li><a href="blog.html">Travel Diaries</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="shop.html" class="nav-cta">Browse Ebooks</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Travel Diaries</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ====== SHOP HERO ====== -->
+    <section class="shop-hero">
+      <div class="shop-hero-inner">
+        <p class="section-label">The Shop</p>
+        <h1 class="section-title" style="color:var(--warm-white);">Travel smarter.<br/>Explore deeper.</h1>
+        <p class="section-subtitle" style="color:rgba(250,247,242,0.65); margin:0 auto;">Destination ebooks and curated travel packages — everything Julie wishes she'd had before her first trip.</p>
+      </div>
+    </section>
+
+    <!-- Filter bar -->
+    <div class="shop-filters">
+      <div class="shop-filters-inner">
+        <button class="filter-btn active" onclick="filterShop('all', this)">All Products</button>
+        <button class="filter-btn" onclick="filterShop('ebooks', this)">Ebooks</button>
+        <button class="filter-btn" onclick="filterShop('packages', this)">Travel Packages</button>
+      </div>
+    </div>
+
+    <!-- ====== SHOP MAIN ====== -->
+    <section class="shop-main">
+      <div class="shop-main-inner">
+
+        <!-- Bundle promo -->
+        <div class="bundle-banner">
+          <div class="bundle-banner-text">
+            <p>✦ Limited Time</p>
+            <h3>Bundle: Ebook + Maldives Package</h3>
+            <p class="bundle-desc">Get the Maldives Insider Ebook free when you book the Maldivian Escape Package.</p>
+          </div>
+          <a href="mailto:julietterabahi@gmail.com?subject=Maldives Bundle Enquiry" class="btn">Claim Bundle</a>
+        </div>
+
+        <!-- EBOOKS -->
+        <div class="shop-section" id="section-ebooks">
+          <div class="shop-section-header">
+            <div>
+              <h2>Travel Ebooks</h2>
+              <p>Insider destination guides from Julie's own travels</p>
+            </div>
+            <span class="tag">Digital Download</span>
+          </div>
+          <div class="ebook-grid">
+
+            <!-- Maldives Ebook -->
+            <div class="card ebook-card">
+              <div class="card-img">
+                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(160deg,#8bb8c4,#4a8090);">Maldives Cover</div>
+              </div>
+              <div class="card-body">
+                <div class="card-meta">
+                  <span class="tag">Ebook</span>
+                  <span class="tag tag-green">Best Seller</span>
+                </div>
+                <h3 class="card-title">The Maldives Insider Guide</h3>
+                <p class="card-desc">Julie's complete guide to Gaafaru Island — the Maldives most tourists miss. Where to stay, eat, dive, and soak it all in.</p>
+                <ul class="card-features">
+                  <li>Hidden spots no other guide covers</li>
+                  <li>Budget breakdowns & honest price guides</li>
+                  <li>Best dive & snorkel spots</li>
+                  <li>Local restaurant & accommodation picks</li>
+                  <li>Packing list & itineraries (3, 5 & 7 days)</li>
+                </ul>
+                <div class="card-price-row">
+                  <span class="price">$24.99</span>
+                  <a href="mailto:julietterabahi@gmail.com?subject=Maldives Ebook Order" class="btn btn-primary">Buy Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Placeholder 2 -->
+            <div class="card ebook-card" style="opacity:0.6;">
+              <div class="card-img">
+                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(160deg,#c4a87a,#8a6a40);">Bali Coming Soon</div>
+              </div>
+              <div class="card-body">
+                <div class="card-meta"><span class="tag">Coming Soon</span></div>
+                <h3 class="card-title">The Bali Hidden Gems Guide</h3>
+                <p class="card-desc">Julie is working on her Bali guide — follow along on Instagram to know the moment it drops.</p>
+                <div class="card-price-row">
+                  <span class="price">$TBA</span>
+                  <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-secondary">Follow to Get Notified</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Placeholder 3 -->
+            <div class="card ebook-card" style="opacity:0.6;">
+              <div class="card-img">
+                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(160deg,#c4a0a0,#8a5050);">Next Guide</div>
+              </div>
+              <div class="card-body">
+                <div class="card-meta"><span class="tag">Coming Soon</span></div>
+                <h3 class="card-title">More Ebooks On The Way</h3>
+                <p class="card-desc">Julie travels constantly. Every trip becomes a guide. Stay tuned for new destinations regularly.</p>
+                <div class="card-price-row">
+                  <span class="price">$TBA</span>
+                  <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-secondary">Stay Tuned</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- PACKAGES -->
+        <div class="shop-section" id="section-packages">
+          <div class="shop-section-header">
+            <div>
+              <h2>Travel Packages</h2>
+              <p>Curated trips with Julie's personal touch — for Gaafaru Island, Maldives</p>
+            </div>
+            <span class="tag tag-green">Limited Availability</span>
+          </div>
+          <div class="package-grid">
+
+            <div class="package-card">
+              <div class="package-card-img">
+                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(170deg,#8bb8c4,#2c5a6a);">Maldives Package</div>
+              </div>
+              <div class="package-card-body">
+                <div>
+                  <span class="tag tag-green">Travel Package</span>
+                  <h3>The Maldivian Escape</h3>
+                  <p>A fully curated trip to Gaafaru Island designed around how Julie herself travels — authentic, unhurried, and unforgettable. Includes handpicked accommodation, activity suggestions, and Julie's personal insider notes.</p>
+                  <ul class="package-includes">
+                    <li class="package-includes-title">What's included:</li>
+                    <li>Curated accommodation options</li>
+                    <li>Activity & excursion guide</li>
+                    <li>Free Maldives Ebook included</li>
+                    <li>Personalised pre-trip consultation</li>
+                    <li>24/7 WhatsApp support during trip</li>
+                  </ul>
+                </div>
+                <div class="package-price-row">
+                  <div class="package-price">From $899 <span>/ person</span></div>
+                  <a href="mailto:julietterabahi@gmail.com?subject=Maldivian Escape Package Enquiry" class="btn btn-green">Enquire Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="package-card" style="opacity:0.65;">
+              <div class="package-card-img">
+                <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(170deg,#b8a87a,#6a5030);">Coming Soon</div>
+              </div>
+              <div class="package-card-body">
+                <div>
+                  <span class="tag">Coming Soon</span>
+                  <h3>More Destinations On The Way</h3>
+                  <p>Julie is constantly scouting new locations to turn into curated packages. Follow her journey on Instagram to find out where she's heading next.</p>
+                </div>
+                <div class="package-price-row">
+                  <div class="package-price">TBA</div>
+                  <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-secondary">Follow Along</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-name">Julie On The Move</div>
+        <div class="logo-tagline">Travel · Fitness · Ebooks</div>
+        <p>Real destinations, real experiences. Julie shares the places and moments that most guides miss.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Travel Diaries</a></li>
+          <li><a href="about.html">About Julie</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Maldives Ebook</a></li>
+          <li><a href="shop.html">Travel Packages</a></li>
+          <li><a href="shop.html">All Ebooks</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Julie On The Move. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/itsjulieonthego" target="_blank">@itsjulieonthego</a>
+        <a href="https://www.instagram.com/MyMaldivianEscape" target="_blank">@MyMaldivianEscape</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function filterShop(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const sectionEbooks = document.getElementById('section-ebooks');
+      const sectionPackages = document.getElementById('section-packages');
+      const banner = document.querySelector('.bundle-banner');
+      if (type === 'all') {
+        sectionEbooks.style.display = '';
+        sectionPackages.style.display = '';
+        if (banner) banner.style.display = '';
+      } else if (type === 'ebooks') {
+        sectionEbooks.style.display = '';
+        sectionPackages.style.display = 'none';
+        if (banner) banner.style.display = 'none';
+      } else if (type === 'packages') {
+        sectionEbooks.style.display = 'none';
+        sectionPackages.style.display = '';
+        if (banner) banner.style.display = 'none';
+      }
+    }
+  </script>
+</body>
+</html>

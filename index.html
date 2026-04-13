@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julie On The Move — Travel, Fitness & Ebooks</title>
+  <meta name="description" content="Julie — your guide to authentic travel, fitness, and destination ebooks. Explore the world through her eyes." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- HOME PAGE SPECIFIC ---- */
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--brown);
+      position: relative;
+      overflow: hidden;
+      padding: 0 5%;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(44,36,22,0.75) 35%, rgba(92,122,82,0.2) 100%),
+        url('images/hero.jpg') center/cover no-repeat;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      width: 100%;
+      padding: 6rem 0 4rem;
+    }
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sand);
+      margin-bottom: 1.5rem;
+    }
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 700;
+      color: var(--warm-white);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--sand);
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: rgba(250,247,242,0.75);
+      max-width: 480px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
+    .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(250,247,242,0.5);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px; height: 40px;
+      background: rgba(250,247,242,0.3);
+    }
+
+    /* Marquee strip */
+    .marquee-strip {
+      background: var(--sand);
+      padding: 0.75rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 25s linear infinite;
+    }
+    .marquee-item {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--warm-white);
+      padding: 0 2.5rem;
+    }
+    .marquee-item::after {
+      content: '✦';
+      margin-left: 2.5rem;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* About strip */
+    .about-strip {
+      background: var(--warm-white);
+      padding: 5rem 5%;
+    }
+    .about-strip-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-strip-img {
+      aspect-ratio: 4/5;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--beige-light);
+      position: relative;
+    }
+    .about-strip-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+    .about-strip-img .img-placeholder {
+      position: absolute; inset: 0;
+      font-size: 0.75rem;
+    }
+    .about-strip-badge {
+      position: absolute;
+      bottom: 1.5rem; right: -1.5rem;
+      background: var(--sand);
+      color: var(--warm-white);
+      width: 90px; height: 90px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      line-height: 1.2;
+      box-shadow: 0 4px 20px rgba(196,149,106,0.4);
+    }
+    .about-strip-badge span {
+      font-size: 0.55rem;
+      font-family: var(--font-sans);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.85;
+    }
+    .about-strip-text .section-subtitle {
+      margin-bottom: 2rem;
+    }
+    .stat-row {
+      display: flex;
+      gap: 2.5rem;
+      margin: 2rem 0;
+    }
+    .stat { }
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+
+    /* Featured Products */
+    .featured-products {
+      background: var(--beige-light);
+      padding: 5rem 5%;
+    }
+    .products-header {
+      max-width: var(--max-width);
+      margin: 0 auto 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .products-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .product-card .card-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: var(--beige-mid);
+      position: relative;
+    }
+    .product-card .card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .card-img img { transform: scale(1.05); }
+    .product-card .card-img .img-placeholder {
+      position: absolute; inset: 0;
+    }
+    .product-card .card-body {
+      padding: 1.25rem 1.5rem 1.5rem;
+    }
+    .product-card .card-tag {
+      margin-bottom: 0.6rem;
+    }
+    .product-card .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.4rem;
+    }
+    .product-card .card-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.6;
+    }
+    .product-card .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .product-price {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--brown);
+    }
+
+    /* Destinations strip */
+    .destinations {
+      background: var(--warm-white);
+      padding: 5rem 5%;
+      text-align: center;
+    }
+    .destinations-header {
+      max-width: 600px;
+      margin: 0 auto 3rem;
+    }
+    .destinations-header .divider { margin: 1rem auto; }
+    .dest-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    .dest-card {
+      aspect-ratio: 2/3;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .dest-card-bg {
+      width: 100%; height: 100%;
+      background: var(--beige-mid);
+      transition: transform 0.5s ease;
+      display: flex;
+      align-items: flex-end;
+    }
+    .dest-card:hover .dest-card-bg { transform: scale(1.04); }
+    .dest-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(44,36,22,0.75) 0%, transparent 50%);
+    }
+    .dest-label {
+      position: absolute;
+      bottom: 1.25rem; left: 1.25rem;
+      color: var(--warm-white);
+      text-align: left;
+    }
+    .dest-label h3 {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.2rem;
+    }
+    .dest-label p {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand);
+    }
+    .dest-card-1 .dest-card-bg { background: #c4b5a4 url('images/dest-maldives.jpg') center/cover; }
+    .dest-card-2 .dest-card-bg { background: #a4b5c4 url('images/dest-sunset.jpg') center/cover; }
+    .dest-card-3 .dest-card-bg { background: #b5c4a4 url('images/dest-jungle.jpg') center/cover; }
+    .dest-card-4 .dest-card-bg { background: #c4a4b5 url('images/dest-beach.jpg') center/cover; }
+
+    /* Instagram CTA */
+    .insta-cta {
+      background: var(--brown);
+      padding: 5rem 5%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .insta-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(196,149,106,0.15) 0%, transparent 70%);
+    }
+    .insta-cta-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .insta-cta .section-title { color: var(--warm-white); margin-bottom: 1rem; }
+    .insta-cta .section-subtitle { color: rgba(250,247,242,0.65); margin: 0 auto 2rem; }
+    .insta-handles {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .insta-handle {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(250,247,242,0.08);
+      border: 1px solid rgba(250,247,242,0.15);
+      border-radius: 50px;
+      padding: 0.6rem 1.2rem;
+      color: var(--warm-white);
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: all var(--transition);
+    }
+    .insta-handle:hover {
+      background: rgba(196,149,106,0.2);
+      border-color: var(--sand);
+      color: var(--sand);
+    }
+    .insta-handle .at { color: var(--sand); margin-right: 1px; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .about-strip-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .about-strip-badge { right: 1rem; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+      .dest-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .products-grid { grid-template-columns: 1fr; }
+      .dest-grid { grid-template-columns: repeat(2, 1fr); }
+      .products-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .hero-buttons { flex-direction: column; }
+      .hero-buttons .btn { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-name">Julie On The Move</span>
+      <span class="logo-tagline">Travel · Fitness · Ebooks</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Travel Diaries</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="shop.html" class="nav-cta">Browse Ebooks</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Travel Diaries</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-label">✦ Travel · Fitness · Authentic Experiences</p>
+        <h1 class="hero-title">Life is better<br/><em>on the move.</em></h1>
+        <p class="hero-sub">Destination guides, fitness on the road, and the hidden gems you won't find on Google. Welcome to Julie's world.</p>
+        <div class="hero-buttons">
+          <a href="shop.html" class="btn btn-primary">Shop Ebooks</a>
+          <a href="about.html" class="btn" style="background:rgba(250,247,242,0.12); color:var(--warm-white); border:1.5px solid rgba(250,247,242,0.4);">Meet Julie</a>
+        </div>
+      </div>
+      <div class="hero-scroll">Scroll</div>
+    </section>
+
+    <!-- ====== MARQUEE ====== -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span class="marquee-item">Maldives</span>
+        <span class="marquee-item">Fitness Travel</span>
+        <span class="marquee-item">Destination Ebooks</span>
+        <span class="marquee-item">Hidden Gems</span>
+        <span class="marquee-item">Gaafaru Island</span>
+        <span class="marquee-item">Travel Packages</span>
+        <span class="marquee-item">Authentic Experiences</span>
+        <span class="marquee-item">itsjulieonthego</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee-item">Maldives</span>
+        <span class="marquee-item">Fitness Travel</span>
+        <span class="marquee-item">Destination Ebooks</span>
+        <span class="marquee-item">Hidden Gems</span>
+        <span class="marquee-item">Gaafaru Island</span>
+        <span class="marquee-item">Travel Packages</span>
+        <span class="marquee-item">Authentic Experiences</span>
+        <span class="marquee-item">itsjulieonthego</span>
+      </div>
+    </div>
+
+    <!-- ====== ABOUT STRIP ====== -->
+    <section class="about-strip">
+      <div class="about-strip-inner">
+        <div class="about-strip-img">
+          <img src="images/jules-portrait.jpg" alt="Julie at the Maldives" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+          <div class="about-strip-badge">
+            <span>Always</span>
+            Moving
+            <span>Forward</span>
+          </div>
+        </div>
+        <div class="about-strip-text">
+          <p class="section-label">Meet Julie</p>
+          <h2 class="section-title">Fitness lover.<br/>Fearless traveller.</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">I'm Julie — I travel to places most people haven't heard of, stay where locals stay, eat what locals eat, and then share every detail so you can do the same. From the Maldives to wherever's next, I bring you along for the ride.</p>
+          <div class="stat-row">
+            <div class="stat">
+              <div class="stat-num">20+</div>
+              <div class="stat-label">Countries Visited</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">5+</div>
+              <div class="stat-label">Ebooks & Counting</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">2</div>
+              <div class="stat-label">Active Instagrams</div>
+            </div>
+          </div>
+          <a href="about.html" class="btn btn-secondary">My Full Story</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FEATURED PRODUCTS ====== -->
+    <section class="featured-products">
+      <div class="products-header">
+        <div>
+          <p class="section-label">Shop the Collection</p>
+          <h2 class="section-title">Guides & Packages</h2>
+        </div>
+        <a href="shop.html" class="btn btn-secondary">View All</a>
+      </div>
+      <div class="products-grid">
+
+        <!-- Maldives Ebook -->
+        <div class="card product-card">
+          <div class="card-img">
+            <img src="images/maldives-bungalows.jpg" alt="Maldives over-water bungalows" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="card-body">
+            <span class="tag">Ebook</span>
+            <h3 class="card-title">The Maldives Insider Guide</h3>
+            <p class="card-desc">Everything you need to visit Gaafaru Island like a local — from where to stay to what to eat.</p>
+            <div class="card-footer">
+              <span class="product-price">$24.99</span>
+              <a href="shop.html" class="btn btn-primary" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Get It</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Maldives Travel Package -->
+        <div class="card product-card">
+          <div class="card-img">
+            <img src="images/maldives-package.jpg" alt="Julie with stingrays in the Maldives" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+          </div>
+          <div class="card-body">
+            <span class="tag tag-green">Travel Package</span>
+            <h3 class="card-title">Maldivian Escape Package</h3>
+            <p class="card-desc">A curated travel package for Gaafaru Island — accommodation, activities, and Julie's personal tips included.</p>
+            <div class="card-footer">
+              <span class="product-price">From $899</span>
+              <a href="shop.html" class="btn btn-green" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Enquire</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Coming Soon -->
+        <div class="card product-card" style="opacity:0.7;">
+          <div class="card-img" style="background:var(--brown);">
+            <div class="img-placeholder" style="position:absolute;inset:0; background:var(--brown); color:var(--sand);">Next Destination</div>
+          </div>
+          <div class="card-body">
+            <span class="tag">Coming Soon</span>
+            <h3 class="card-title">Next Destination Ebook</h3>
+            <p class="card-desc">Julie's next country guide is in the works. Follow her on Instagram to find out where she's heading.</p>
+            <div class="card-footer">
+              <span class="product-price">TBA</span>
+              <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-secondary" style="padding:0.55rem 1.2rem; font-size:0.72rem;">Follow Along</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== DESTINATIONS ====== -->
+    <section class="destinations">
+      <div class="destinations-header">
+        <p class="section-label">Explore the World</p>
+        <h2 class="section-title">Destinations</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Every place Julie visits becomes a guide. Here are a few of the destinations she's covered.</p>
+      </div>
+      <div class="dest-grid">
+        <div class="dest-card dest-card-1">
+          <div class="dest-card-bg"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-label">
+            <h3>Maldives</h3>
+            <p>Ebook Available</p>
+          </div>
+        </div>
+        <div class="dest-card dest-card-2">
+          <div class="dest-card-bg"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-label">
+            <h3>Bali</h3>
+            <p>Guide Coming Soon</p>
+          </div>
+        </div>
+        <div class="dest-card dest-card-3">
+          <div class="dest-card-bg"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-label">
+            <h3>Morocco</h3>
+            <p>Guide Coming Soon</p>
+          </div>
+        </div>
+        <div class="dest-card dest-card-4">
+          <div class="dest-card-bg"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-label">
+            <h3>More</h3>
+            <p>Explore All</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== INSTAGRAM CTA ====== -->
+    <section class="insta-cta">
+      <div class="insta-cta-inner">
+        <p class="section-label" style="color:var(--sand);">Follow The Journey</p>
+        <h2 class="section-title">Behind the scenes, real-time.</h2>
+        <p class="section-subtitle">Two feeds, two vibes. Follow along on Instagram for daily travel inspo, fitness content, and life on the move.</p>
+        <div class="insta-handles">
+          <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="insta-handle">
+            <span class="at">@</span>itsjulieonthego
+          </a>
+          <a href="https://www.instagram.com/MyMaldivianEscape" target="_blank" class="insta-handle">
+            <span class="at">@</span>MyMaldivianEscape
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- end .page-content -->
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-name">Julie On The Move</div>
+        <div class="logo-tagline">Travel · Fitness · Ebooks</div>
+        <p>Real destinations, real experiences. Julie shares the places and moments that most guides miss.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Travel Diaries</a></li>
+          <li><a href="about.html">About Julie</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Maldives Ebook</a></li>
+          <li><a href="shop.html">Travel Packages</a></li>
+          <li><a href="shop.html">All Ebooks</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Julie On The Move. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/itsjulieonthego" target="_blank">@itsjulieonthego</a>
+        <a href="https://www.instagram.com/MyMaldivianEscape" target="_blank">@MyMaldivianEscape</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

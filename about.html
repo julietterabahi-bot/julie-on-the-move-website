@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Julie On The Move</title>
+  <meta name="description" content="Meet Julie — the face behind Julie On The Move. Travel, fitness, and a life lived fully." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- ABOUT PAGE SPECIFIC ---- */
+
+    .about-hero {
+      background: var(--beige-light);
+      padding: 5rem 5% 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      max-width: 100%;
+    }
+    .about-hero-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      width: 100%;
+    }
+    .about-hero-img {
+      aspect-ratio: 3/4;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--beige-mid);
+      position: relative;
+    }
+    .about-hero-img .img-placeholder {
+      position: absolute; inset: 0;
+    }
+    .about-hero-text .section-subtitle { max-width: 100%; margin-bottom: 2rem; }
+
+    /* Values row */
+    .values-row {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .value-item {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.25rem;
+      border-left: 3px solid var(--sand);
+    }
+    .value-item h4 {
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.3rem;
+    }
+    .value-item p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Story section */
+    .story-section {
+      padding: 5rem 5%;
+      background: var(--warm-white);
+    }
+    .story-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 5rem;
+    }
+    .story-text p {
+      font-size: 1rem;
+      color: var(--brown-mid);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+    .story-text p strong {
+      color: var(--brown);
+      font-weight: 700;
+    }
+    .story-sidebar {}
+    .sidebar-card {
+      background: var(--beige-light);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .sidebar-card h4 {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--sand-dark);
+      margin-bottom: 1rem;
+    }
+    .sidebar-card ul li {
+      font-size: 0.85rem;
+      color: var(--brown-mid);
+      padding: 0.35rem 0;
+      border-bottom: 1px solid var(--beige-mid);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .sidebar-card ul li:last-child { border-bottom: none; }
+    .sidebar-card ul li .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--sand);
+      flex-shrink: 0;
+    }
+
+    /* Journey / timeline */
+    .journey-section {
+      padding: 5rem 5%;
+      background: var(--beige-light);
+    }
+    .journey-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .journey-header { margin-bottom: 3rem; }
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 16.67%;
+      right: 16.67%;
+      height: 2px;
+      background: var(--beige-mid);
+    }
+    .timeline-item {
+      text-align: center;
+      position: relative;
+    }
+    .timeline-dot {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--warm-white);
+      border: 3px solid var(--sand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      font-family: var(--font-serif);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--sand-dark);
+      position: relative;
+      z-index: 1;
+    }
+    .timeline-item h3 {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brown);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-item p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Fitness section */
+    .fitness-section {
+      padding: 5rem 5%;
+      background: var(--brown);
+      position: relative;
+      overflow: hidden;
+    }
+    .fitness-section::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(196,149,106,0.15) 0%, transparent 60%);
+    }
+    .fitness-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .fitness-text .section-label { color: var(--sand); }
+    .fitness-text .section-title { color: var(--warm-white); }
+    .fitness-text .section-subtitle { color: rgba(250,247,242,0.65); margin-bottom: 2rem; }
+    .fitness-text .divider { background: var(--sand); }
+    .fitness-img {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .fitness-img-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(250,247,242,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250,247,242,0.35);
+    }
+    .fitness-img-item:nth-child(2) { margin-top: 1.5rem; }
+    .fitness-img-item:nth-child(3) { margin-top: -1.5rem; }
+
+    /* CTA section */
+    .about-cta {
+      padding: 5rem 5%;
+      background: var(--warm-white);
+      text-align: center;
+    }
+    .about-cta-inner {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .about-cta .section-subtitle { margin: 0 auto 2rem; text-align: center; }
+    .cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .about-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .story-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .fitness-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .timeline { grid-template-columns: 1fr; }
+      .timeline::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .values-row { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-name">Julie On The Move</span>
+      <span class="logo-tagline">Travel · Fitness · Ebooks</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html">Travel Diaries</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="shop.html" class="nav-cta">Browse Ebooks</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Travel Diaries</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ====== ABOUT HERO ====== -->
+    <section style="background:var(--beige-light); padding:5rem 5% 4rem;">
+      <div style="max-width:var(--max-width); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;">
+        <div class="about-hero-img" style="aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:var(--beige-mid); position:relative;">
+          <div class="img-placeholder" style="position:absolute;inset:0;">Your Photo Here</div>
+        </div>
+        <div>
+          <p class="section-label">Hey, I'm Julie</p>
+          <h1 class="section-title">A fitness lover<br/>who can't stop<br/>moving.</h1>
+          <div class="divider"></div>
+          <p class="section-subtitle">I'm Julie — part fitness coach, part serial traveller, and full-time explorer of places most people have never heard of. I believe the best travel is the kind that takes you somewhere real.</p>
+          <div class="values-row">
+            <div class="value-item">
+              <h4>Authentic Travel</h4>
+              <p>I go where locals go and share what they'd tell a friend.</p>
+            </div>
+            <div class="value-item">
+              <h4>Fitness On The Road</h4>
+              <p>Staying active abroad is possible — and I'll show you how.</p>
+            </div>
+            <div class="value-item">
+              <h4>Real Reviews</h4>
+              <p>No sponsored fluff. If it wasn't worth it, I'll tell you.</p>
+            </div>
+            <div class="value-item">
+              <h4>Community First</h4>
+              <p>Built around a community of travellers who crave the real thing.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== STORY ====== -->
+    <section class="story-section">
+      <div class="story-inner">
+        <div class="story-text">
+          <p class="section-label">My Story</p>
+          <h2 class="section-title" style="margin-bottom:2rem;">How it all started</h2>
+          <p>It started, like most good things do, with a one-way ticket and absolutely no plan. <strong>I didn't set out to become a travel content creator</strong> — I just wanted to see the world the way it actually was, not the polished, overpriced, tourist-trap version that most guides sell.</p>
+          <p>The Maldives was the turning point. Everyone told me it was only for honeymooners and billionaires. I found a tiny island called <strong>Gaafaru</strong> that barely showed up on Google Maps. Stayed with locals. Dove with whale sharks. Ate the best food I'd ever tasted for $5. And I thought — someone needs to write this down.</p>
+          <p>So I did. The Maldives Insider Guide became my first ebook, and the response was something I didn't expect. People wanted more. <strong>More destinations, more honest guides, more of the stuff Google doesn't surface.</strong></p>
+          <p>Now I travel constantly, build out guides for every place I land, and share the fitness and lifestyle content that keeps me going between flights. This website is the home for all of it.</p>
+          <a href="shop.html" class="btn btn-primary" style="margin-top:1rem;">See My Ebooks</a>
+        </div>
+        <div class="story-sidebar">
+          <div class="sidebar-card">
+            <h4>Countries Visited</h4>
+            <ul>
+              <li><span class="dot"></span>Maldives (Gaafaru Island)</li>
+              <li><span class="dot"></span>Morocco</li>
+              <li><span class="dot"></span>Bali, Indonesia</li>
+              <li><span class="dot"></span>Thailand</li>
+              <li><span class="dot"></span>Portugal</li>
+              <li><span class="dot"></span>+ 15 more...</li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h4>Find Me On</h4>
+            <ul>
+              <li><span class="dot"></span><a href="https://www.instagram.com/itsjulieonthego" target="_blank">@itsjulieonthego</a></li>
+              <li><span class="dot"></span><a href="https://www.instagram.com/MyMaldivianEscape" target="_blank">@MyMaldivianEscape</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card" style="background:var(--sand); color:var(--warm-white);">
+            <h4 style="color:rgba(250,247,242,0.7);">Got questions?</h4>
+            <p style="font-size:0.85rem; margin-bottom:1rem; line-height:1.6;">Enquire about travel packages or ebooks — Julie reads every message.</p>
+            <a href="mailto:julietterabahi@gmail.com" class="btn" style="background:var(--warm-white); color:var(--sand-dark); width:100%; text-align:center; display:block;">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== JOURNEY TIMELINE ====== -->
+    <section class="journey-section">
+      <div class="journey-inner">
+        <div class="journey-header">
+          <p class="section-label">The Journey So Far</p>
+          <h2 class="section-title">Milestones on the move</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot">01</div>
+            <h3>First solo trip</h3>
+            <p>Packed a bag and left without a plan. The fear lasted about 10 minutes. The addiction lasted forever.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">02</div>
+            <h3>Discovered Gaafaru</h3>
+            <p>Found an island in the Maldives that nobody was writing about. Decided that needed to change.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">03</div>
+            <h3>Launched @itsjulieonthego</h3>
+            <p>Started sharing travel and fitness content. The community grew faster than expected.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">04</div>
+            <h3>Published first ebook</h3>
+            <p>The Maldives Insider Guide dropped. Real destinations, real prices, no fluff.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">05</div>
+            <h3>Launched @MyMaldivianEscape</h3>
+            <p>A dedicated channel for the Maldives brand and travel packages for Gaafaru Island.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot">→</div>
+            <h3>What's next</h3>
+            <p>More countries. More ebooks. More guides that tell the truth. Follow along to find out where the next one lands.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FITNESS ====== -->
+    <section class="fitness-section">
+      <div class="fitness-inner">
+        <div class="fitness-text">
+          <p class="section-label">Beyond Travel</p>
+          <h2 class="section-title">Fitness is the<br/>through line.</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle">Staying active on the road isn't just possible — it's one of the best ways to experience a new place. Julie shares workouts, wellness routines, and how she maintains her fitness no matter where she is in the world.</p>
+          <a href="https://www.instagram.com/itsjulieonthego" target="_blank" class="btn btn-primary" style="margin-top:0.5rem;">Follow the Fitness Journey</a>
+        </div>
+        <div class="fitness-img">
+          <div class="fitness-img-item">Photo 1</div>
+          <div class="fitness-img-item">Photo 2</div>
+          <div class="fitness-img-item">Photo 3</div>
+          <div class="fitness-img-item">Photo 4</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CTA ====== -->
+    <section class="about-cta">
+      <div class="about-cta-inner">
+        <p class="section-label">Let's Connect</p>
+        <h2 class="section-title">Ready to explore?</h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+        <p class="section-subtitle">Whether you want to grab an ebook, enquire about a travel package, or just say hi — Julie is always up for talking travel.</p>
+        <div class="cta-buttons">
+          <a href="shop.html" class="btn btn-primary">Shop Ebooks</a>
+          <a href="mailto:julietterabahi@gmail.com" class="btn btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-name">Julie On The Move</div>
+        <div class="logo-tagline">Travel · Fitness · Ebooks</div>
+        <p>Real destinations, real experiences. Julie shares the places and moments that most guides miss.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Travel Diaries</a></li>
+          <li><a href="about.html">About Julie</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Maldives Ebook</a></li>
+          <li><a href="shop.html">Travel Packages</a></li>
+          <li><a href="shop.html">All Ebooks</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Julie On The Move. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/itsjulieonthego" target="_blank">@itsjulieonthego</a>
+        <a href="https://www.instagram.com/MyMaldivianEscape" target="_blank">@MyMaldivianEscape</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

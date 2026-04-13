@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Travel Diaries — Julie On The Move</title>
+  <meta name="description" content="Julie's travel diaries — stories, guides, and honest experiences from around the world." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ---- BLOG PAGE SPECIFIC ---- */
+
+    .blog-hero {
+      background: var(--brown);
+      padding: 5rem 5% 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right, rgba(44,36,22,0.9) 40%, rgba(44,36,22,0.5) 100%),
+        url('https://images.unsplash.com/photo-1482938289607-e9573fc25ebb?w=1600&q=70') center/cover;
+    }
+    .blog-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+    .blog-hero .section-label { color: var(--sand); }
+    .blog-hero .section-title { color: var(--warm-white); max-width: 550px; }
+    .blog-hero .section-subtitle { color: rgba(250,247,242,0.65); }
+    .blog-hero .divider { background: var(--sand); }
+
+    /* Blog filters */
+    .blog-filters {
+      background: var(--warm-white);
+      border-bottom: 1px solid var(--beige-mid);
+      padding: 0 5%;
+      position: sticky;
+      top: var(--nav-height);
+      z-index: 100;
+      overflow-x: auto;
+    }
+    .blog-filters-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+    }
+    .filter-btn {
+      padding: 1.1rem 1.25rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--transition);
+    }
+    .filter-btn:hover { color: var(--brown); }
+    .filter-btn.active {
+      color: var(--sand-dark);
+      border-bottom-color: var(--sand);
+    }
+
+    /* Featured post */
+    .blog-main {
+      padding: 4rem 5%;
+      background: var(--warm-white);
+    }
+    .blog-main-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .featured-post {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(44,36,22,0.1);
+      margin-bottom: 4rem;
+      background: #fff;
+    }
+    .featured-post-img {
+      background: var(--beige-mid);
+      position: relative;
+      min-height: 400px;
+    }
+    .featured-post-img .img-placeholder {
+      position: absolute; inset: 0;
+      background: linear-gradient(150deg, #8bb8c4, #2c5a6a);
+      color: rgba(250,247,242,0.5);
+    }
+    .featured-post-body {
+      padding: 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-post-body .tag { margin-bottom: 1rem; display: inline-block; }
+    .featured-post-body h2 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    .featured-post-body .post-meta {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+    .featured-post-body p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+    }
+
+    /* Posts grid */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .post-card {}
+    .post-card .card-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: var(--beige-light);
+      position: relative;
+    }
+    .post-card .card-img .img-placeholder {
+      position: absolute; inset: 0;
+    }
+    .post-card .card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .post-card:hover .card-img img { transform: scale(1.05); }
+    .post-card .card-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .post-card .post-meta {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+    .post-card .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--brown);
+      line-height: 1.35;
+      margin-bottom: 0.6rem;
+    }
+    .post-card .card-excerpt {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+    .post-card .read-more {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--sand-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: gap var(--transition);
+    }
+    .post-card:hover .read-more { gap: 0.7rem; }
+    .post-card .read-more::after { content: '→'; }
+
+    /* Section label for posts */
+    .posts-section-label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--beige-mid);
+    }
+
+    /* Load more */
+    .load-more-row {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* Newsletter */
+    .newsletter {
+      background: var(--beige-light);
+      padding: 5rem 5%;
+      text-align: center;
+    }
+    .newsletter-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .newsletter .section-subtitle { margin: 0 auto 2rem; text-align: center; }
+    .newsletter-form {
+      display: flex;
+      gap: 0;
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(44,36,22,0.1);
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.85rem 1.5rem;
+      border: none;
+      background: #fff;
+      font-family: var(--font-sans);
+      font-size: 0.88rem;
+      color: var(--brown);
+      outline: none;
+    }
+    .newsletter-form input::placeholder { color: var(--text-muted); }
+    .newsletter-form button {
+      padding: 0.85rem 1.5rem;
+      background: var(--sand);
+      color: var(--warm-white);
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background var(--transition);
+      white-space: nowrap;
+    }
+    .newsletter-form button:hover { background: var(--sand-dark); }
+    .newsletter-note {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 900px) {
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-post-img { min-height: 250px; }
+      .posts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== NAVIGATION ====== -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <span class="logo-name">Julie On The Move</span>
+      <span class="logo-tagline">Travel · Fitness · Ebooks</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="blog.html" class="active">Travel Diaries</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="shop.html" class="nav-cta">Browse Ebooks</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Travel Diaries</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ====== BLOG HERO ====== -->
+    <section class="blog-hero">
+      <div class="blog-hero-inner">
+        <p class="section-label">✦ Real stories, real places</p>
+        <h1 class="section-title">Travel Diaries</h1>
+        <div class="divider"></div>
+        <p class="section-subtitle">The places Julie has been, the things she's learned, and everything she'd tell a friend before they book their flight.</p>
+      </div>
+    </section>
+
+    <!-- Blog filters -->
+    <div class="blog-filters">
+      <div class="blog-filters-inner">
+        <button class="filter-btn active">All Posts</button>
+        <button class="filter-btn">Maldives</button>
+        <button class="filter-btn">Asia</button>
+        <button class="filter-btn">Africa & Middle East</button>
+        <button class="filter-btn">Europe</button>
+        <button class="filter-btn">Fitness Travel</button>
+      </div>
+    </div>
+
+    <!-- ====== BLOG MAIN ====== -->
+    <section class="blog-main">
+      <div class="blog-main-inner">
+
+        <!-- Featured Post -->
+        <div class="featured-post">
+          <div class="featured-post-img">
+            <div class="img-placeholder">Maldives Feature Image</div>
+          </div>
+          <div class="featured-post-body">
+            <span class="tag tag-green">Featured</span>
+            <div class="post-meta">Maldives · March 2026 · 8 min read</div>
+            <h2>Why Gaafaru Island Is the Maldives Most Tourists Miss</h2>
+            <p>Everyone pictures Maldives as overwater bungalows and $500/night resorts. I found something completely different on a tiny island where locals live — and it changed the way I travel forever.</p>
+            <a href="#" class="btn btn-primary">Read the Story</a>
+          </div>
+        </div>
+
+        <!-- Recent posts -->
+        <p class="posts-section-label">Recent Posts</p>
+        <div class="posts-grid">
+
+          <div class="card post-card">
+            <div class="card-img">
+              <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(150deg,#c4a87a,#8a6040);">Morocco Photo</div>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">Morocco · Feb 2026 · 6 min read</div>
+              <h3 class="card-title">The Medina No Travel Blog Talks About</h3>
+              <p class="card-excerpt">Marrakesh gets all the attention. But there's a medina an hour away that feels like stepping back 500 years — and almost nobody goes there.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+
+          <div class="card post-card">
+            <div class="card-img">
+              <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(150deg,#8cb4a0,#3a6a50);">Bali Photo</div>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">Bali · Jan 2026 · 5 min read</div>
+              <h3 class="card-title">Staying Fit in Bali Without a Gym in Sight</h3>
+              <p class="card-excerpt">Yoga on rice terraces, ocean swims at dawn, trail runs through rice paddies — here's how I kept my fitness routine alive in Bali.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+
+          <div class="card post-card">
+            <div class="card-img">
+              <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(150deg,#c4a4a4,#7a4a50);">Portugal Photo</div>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">Portugal · Dec 2025 · 4 min read</div>
+              <h3 class="card-title">Lisbon on $50 a Day — A Real Budget Breakdown</h3>
+              <p class="card-excerpt">Forget the expensive "budget travel" guides that still cost you $200/day. Here's what I actually spent in Lisbon for a week.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+
+          <div class="card post-card">
+            <div class="card-img">
+              <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(150deg,#a4b4c4,#4a6070);">Thailand Photo</div>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">Thailand · Nov 2025 · 7 min read</div>
+              <h3 class="card-title">The Thailand Islands That Haven't Been Ruined Yet</h3>
+              <p class="card-excerpt">Koh Samui and Phuket are done. Here are the islands I actually recommend — the ones that still feel like Thailand used to.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+
+          <div class="card post-card">
+            <div class="card-img">
+              <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(150deg,#c4b48c,#7a6a3a);">Fitness Photo</div>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">Fitness · Oct 2025 · 5 min read</div>
+              <h3 class="card-title">My Full-Body Travel Workout (No Equipment Needed)</h3>
+              <p class="card-excerpt">Hotel room, beach, hostel rooftop — this is the exact workout I do wherever I am in the world. 25 minutes and you're done.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+
+          <div class="card post-card">
+            <div class="card-img">
+              <div class="img-placeholder" style="position:absolute;inset:0;background:linear-gradient(150deg,#8090a4,#303a50);">Night sky</div>
+            </div>
+            <div class="card-body">
+              <div class="post-meta">Maldives · Sep 2025 · 6 min read</div>
+              <h3 class="card-title">Diving with Whale Sharks in Gaafaru — What It's Actually Like</h3>
+              <p class="card-excerpt">The photos don't do it justice. Here's the full honest account of what it's like to dive with whale sharks in the Maldives.</p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="load-more-row">
+          <a href="#" class="btn btn-secondary">Load More Posts</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== NEWSLETTER ====== -->
+    <section class="newsletter">
+      <div class="newsletter-inner">
+        <p class="section-label">Stay In The Loop</p>
+        <h2 class="section-title">New stories, straight to your inbox.</h2>
+        <div class="divider" style="margin:1rem auto;"></div>
+        <p class="section-subtitle">No spam. Just new destination guides, travel tips, and the occasional deal on ebooks — when Julie has something worth sharing.</p>
+        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+          <input type="email" placeholder="your@email.com" required />
+          <button type="submit">Subscribe</button>
+        </form>
+        <p class="newsletter-note">Unsubscribe anytime. No spam, ever.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-name">Julie On The Move</div>
+        <div class="logo-tagline">Travel · Fitness · Ebooks</div>
+        <p>Real destinations, real experiences. Julie shares the places and moments that most guides miss.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Travel Diaries</a></li>
+          <li><a href="about.html">About Julie</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Maldives Ebook</a></li>
+          <li><a href="shop.html">Travel Packages</a></li>
+          <li><a href="shop.html">All Ebooks</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Julie On The Move. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/itsjulieonthego" target="_blank">@itsjulieonthego</a>
+        <a href="https://www.instagram.com/MyMaldivianEscape" target="_blank">@MyMaldivianEscape</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    function handleSubscribe(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('button');
+      btn.textContent = 'Subscribed ✓';
+      btn.style.background = 'var(--green)';
+      e.target.querySelector('input').value = '';
+    }
+  </script>
+</body>
+</html>
