@@ -289,7 +289,7 @@
         </div>
         <div>
           <p class="section-label">Hey, I'm Julie</p>
-          <h1 class="section-title">A fitness lover<br/>who can't stop<br/>moving.</h1>
+          <h1 class="section-title">A fitness lover<br/>who lives her life<br/>on the go.</h1>
           <div class="divider"></div>
           <p class="section-subtitle" style="max-width:100%;">I'm Julie — part fitness coach, part serial traveller, and full-time explorer of places most people have never heard of. I believe the best travel is the kind that takes you somewhere real.</p>
           <div class="values-row">
@@ -333,7 +333,24 @@
               <li><span class="dot"></span>Maldives (Gaafaru & Gulhi)</li>
               <li><span class="dot"></span>Bali, Indonesia</li>
               <li><span class="dot"></span>Thailand</li>
-              <li><span class="dot"></span>+ 15 more...</li>
+              <li id="moreCountriesToggle" style="cursor:pointer; color:var(--sand-dark); font-weight:700;" onclick="document.getElementById('moreCountries').style.display='block'; this.style.display='none';"><span class="dot"></span>+ 15 more...</li>
+            </ul>
+            <ul id="moreCountries" style="display:none;">
+              <li><span class="dot"></span>Japan (Tokyo & Okinawa)</li>
+              <li><span class="dot"></span>Philippines</li>
+              <li><span class="dot"></span>Australia</li>
+              <li><span class="dot"></span>Fiji</li>
+              <li><span class="dot"></span>Colombia (Medellín & Cartagena)</li>
+              <li><span class="dot"></span>Sri Lanka</li>
+              <li><span class="dot"></span>Malaysia</li>
+              <li><span class="dot"></span>Singapore</li>
+              <li><span class="dot"></span>Vietnam</li>
+              <li><span class="dot"></span>Cambodia</li>
+              <li><span class="dot"></span>Morocco</li>
+              <li><span class="dot"></span>Turkey</li>
+              <li><span class="dot"></span>Greece</li>
+              <li><span class="dot"></span>Spain</li>
+              <li><span class="dot"></span>United Arab Emirates</li>
             </ul>
           </div>
           <div class="sidebar-card">
@@ -401,13 +418,16 @@
           <h2 class="section-title">Stay fit.<br/>Travel far.</h2>
           <div class="divider"></div>
           <p class="section-subtitle">Staying active on the road isn't just possible — it's one of the best ways to experience a new place. Julie shares workouts, wellness routines, and how she maintains her fitness no matter where she is in the world.</p>
-          <a href="https://www.instagram.com/itsjulieonthemove" target="_blank" class="btn btn-primary" style="margin-top:0.5rem;">Follow the Fitness Journey</a>
+          <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:0.5rem;">
+            <a href="https://www.instagram.com/itsjulieonthemove" target="_blank" class="btn btn-primary">Follow the Fitness Journey</a>
+            <a href="shop.html#section-ebooks" class="btn" style="background:rgba(250,247,242,0.12); color:var(--warm-white); border:1.5px solid rgba(250,247,242,0.4);">Shop Ebook Guides</a>
+          </div>
         </div>
         <div class="fitness-img">
+          <div class="fitness-img-item" style="background:url('images/fitness-travel.jpg') center/cover;"></div>
+          <div class="fitness-img-item" style="background:url('images/fitness-food3.jpg') center/cover;"></div>
           <div class="fitness-img-item" style="background:url('images/fitness-yoga.jpg') center/cover;"></div>
-          <div class="fitness-img-item" style="background:url('images/fitness-food.jpg') center/cover;"></div>
-          <div class="fitness-img-item" style="background:url('images/fitness-run.jpg') center/cover;"></div>
-          <div class="fitness-img-item" style="background:url('images/fitness-food2.jpg') center/cover;"></div>
+          <div class="fitness-img-item" style="background:url('images/fitness-food4.jpg') center/cover;"></div>
         </div>
       </div>
     </section>
