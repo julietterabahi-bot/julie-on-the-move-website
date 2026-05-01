@@ -365,19 +365,41 @@
     }
     .insta-handle .at { color: var(--sand); margin-right: 1px; }
 
+    /* Fitness home section */
+    .fitness-home-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .fitness-home-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
     /* Responsive */
     @media (max-width: 900px) {
       .about-strip-inner { grid-template-columns: 1fr; gap: 3rem; }
       .about-strip-badge { right: 1rem; }
       .products-grid { grid-template-columns: repeat(2, 1fr); }
-      .dest-grid { grid-template-columns: repeat(2, 1fr); }
+      .dest-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      .fitness-home-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
     @media (max-width: 600px) {
       .products-grid { grid-template-columns: 1fr; }
-      .dest-grid { grid-template-columns: repeat(2, 1fr); }
+      .dest-grid { grid-template-columns: repeat(2, 1fr) !important; }
       .products-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
       .hero-buttons { flex-direction: column; }
       .hero-buttons .btn { text-align: center; }
+      .fitness-home-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .fitness-home-text { text-align: left; padding: 0; }
+      .fitness-home-photos { grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+      .fitness-home-photos > div { margin-top: 0 !important; }
     }
   </style>
 </head>
@@ -532,7 +554,7 @@
         <!-- Fitness on the Go -->
         <div class="card product-card">
           <div class="card-img">
-            <img src="images/fitness-dumbbells.jpg" alt="Fitness on the Go" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+            <img src="images/fitness-clean.jpg" alt="Fitness on the Go" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           </div>
           <div class="card-body">
             <span class="tag tag-green">Ebook</span>
@@ -556,7 +578,7 @@
         <div class="divider"></div>
         <p class="section-subtitle">Every place Julie visits becomes a guide. Here are a few of the destinations she's covered.</p>
       </div>
-      <div class="dest-grid" style="grid-template-columns:repeat(4, 1fr);">
+      <div class="dest-grid">
 
         <div class="dest-card">
           <div class="dest-card-bg" style="background:url('images/dest-maldives.jpg') center/cover;"></div>
@@ -634,10 +656,10 @@
     </section>
 
     <!-- ====== FITNESS SECTION ====== -->
-    <section style="background:var(--brown); padding:5rem 5%; position:relative; overflow:hidden;">
+    <section class="fitness-home" style="background:var(--brown); padding:5rem 5%; position:relative; overflow:hidden;">
       <div style="position:absolute; inset:0; background:radial-gradient(ellipse at 80% 50%, rgba(196,149,106,0.15) 0%, transparent 60%);"></div>
-      <div style="max-width:var(--max-width); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; position:relative; z-index:1;">
-        <div>
+      <div class="fitness-home-inner">
+        <div class="fitness-home-text">
           <p class="section-label" style="color:var(--sand);">Beyond Travel</p>
           <h2 class="section-title" style="color:var(--warm-white);">Stay fit.<br/>Travel far.</h2>
           <div class="divider" style="background:var(--sand);"></div>
@@ -647,7 +669,7 @@
             <a href="shop.html#section-ebooks" class="btn" style="background:rgba(250,247,242,0.12); color:var(--warm-white); border:1.5px solid rgba(250,247,242,0.4);">Shop Ebook Guides</a>
           </div>
         </div>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+        <div class="fitness-home-photos">
           <div style="aspect-ratio:1; border-radius:12px; overflow:hidden;">
             <img src="images/fitness-weights.jpg" alt="Weight lifting" style="width:100%;height:100%;object-fit:cover;" />
           </div>
@@ -700,9 +722,9 @@
       <div class="footer-col">
         <h4>Shop</h4>
         <ul>
-          <li><a href="shop.html">Maldives Ebook</a></li>
-          <li><a href="shop.html">Travel Packages</a></li>
-          <li><a href="shop.html">All Ebooks</a></li>
+          <li><a href="shop.html#section-packages">Maldives Travel Packages</a></li>
+          <li><a href="shop.html#section-ebooks">Travel Ebooks</a></li>
+          <li><a href="shop.html#section-ebooks">Fitness Ebooks</a></li>
         </ul>
       </div>
     </div>
