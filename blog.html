@@ -325,7 +325,7 @@
       <div class="blog-main-inner">
 
         <!-- Featured Post -->
-        <div class="featured-post">
+        <div class="featured-post" id="featured-gaafaru">
           <div class="featured-post-img">
             <img src="images/maldives-bungalows.jpg" alt="Maldives" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
           </div>
@@ -334,7 +334,48 @@
             <div class="post-meta">Maldives · March 2026 · 8 min read</div>
             <h2>Why Gaafaru Island Is the Maldives Most Tourists Miss</h2>
             <p>Everyone pictures Maldives as overwater bungalows and $500/night resorts. I found something completely different on a tiny island where locals live — and it changed the way I travel forever.</p>
-            <a href="#" class="btn btn-primary">Read the Story</a>
+            <a href="javascript:void(0)" class="btn btn-primary" onclick="toggleStory('gaafaru-story')">Read the Story</a>
+          </div>
+        </div>
+
+        <!-- Gaafaru Full Story -->
+        <div id="gaafaru-story" class="full-story" style="display:none; background:#fff; border-radius:16px; padding:3rem; margin-bottom:4rem; box-shadow:0 2px 20px rgba(44,36,22,0.1); line-height:1.85; color:var(--brown-mid); font-size:1rem;">
+          <h2 style="font-family:var(--font-serif); font-size:1.8rem; color:var(--brown); margin-bottom:0.5rem;">Why Gaafaru Island Is the Maldives Most Tourists Miss</h2>
+          <p style="font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-muted); margin-bottom:2rem;">Maldives · March 2026 · 8 min read</p>
+
+          <p>When most people think of the Maldives, they picture the same thing: overwater bungalows, turquoise infinity pools, and a price tag that makes your stomach drop. And sure, those resorts exist. But that's not the Maldives I fell in love with.</p>
+
+          <p>I found <strong>Gaafaru Island</strong> almost by accident. It barely showed up on Google Maps. There were no influencer photos, no luxury resort reviews, no "top 10" lists featuring it. Just a tiny island in the Kaafu Atoll, about two hours by speedboat from Malé, where fewer than 1,500 people live.</p>
+
+          <p>And honestly? It was the most authentic travel experience I've ever had.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">What Makes Gaafaru Different</h3>
+
+          <p>Gaafaru is a <strong>local island</strong> — meaning it's not a private resort island. You stay in guesthouses run by Maldivian families. You eat at local restaurants where the fish was caught that morning. You walk the sandy streets alongside people who actually live there.</p>
+
+          <p>There's no pretence. No buffet. No wristband. Just real Maldivian life happening around you while you snorkel over some of the most untouched reefs I've ever seen.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">The Diving Changed Everything</h3>
+
+          <p>Gaafaru sits right on a migration route for whale sharks and manta rays. I'm not exaggerating when I say I swam with whale sharks on my second day there. The dive guides are local, the boats are small, and you're not fighting 40 other tourists for a photo. It felt like a secret that hadn't been spoiled yet.</p>
+
+          <p>The house reef is walkable from the beach — literally wade in and you're surrounded by reef sharks, sea turtles, and coral that actually looks alive. After years of seeing bleached reefs in tourist-heavy destinations, Gaafaru felt like going back in time.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">The Real Cost</h3>
+
+          <p>Here's what most people don't realise: you can do the Maldives on a real budget if you skip the resort islands. My guesthouse on Gaafaru cost a fraction of what you'd pay at a resort. Meals were $5–$10. Dive trips were genuinely affordable. The whole trip — flights included — was less than what some people pay for two nights at a resort.</p>
+
+          <p>I wrote everything down — every cost, every tip, every hidden spot — and turned it into <a href="shop.html#section-ebooks" style="color:var(--sand-dark); font-weight:700;">The Maldives Insider Guide</a>. It's the book I wish I'd had before I went.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">Would I Go Back?</h3>
+
+          <p>In a heartbeat. Gaafaru is the kind of place that reminds you why you started travelling in the first place — not for the Instagram photo, but for the feeling of being somewhere truly new. Somewhere that hasn't been packaged and sold to you yet.</p>
+
+          <p>If you're thinking about the Maldives and you want the real version, <strong>start with Gaafaru</strong>. And if you want the full guide — every restaurant, every dive spot, every budget hack — <a href="shop.html#section-ebooks" style="color:var(--sand-dark); font-weight:700;">grab the ebook here</a>.</p>
+
+          <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--beige-mid); display:flex; gap:1rem; flex-wrap:wrap;">
+            <a href="shop.html#section-ebooks" class="btn btn-primary">Get the Maldives Ebook</a>
+            <a href="javascript:void(0)" class="btn btn-secondary" onclick="toggleStory('gaafaru-story')">Close Story</a>
           </div>
         </div>
 
@@ -386,7 +427,7 @@
               <div class="post-meta">Thailand · Nov 2025 · 7 min read</div>
               <h3 class="card-title">The Thailand Islands That Haven't Been Ruined Yet</h3>
               <p class="card-excerpt">Koh Samui and Phuket are done. Here are the islands I actually recommend — the ones that still feel like Thailand used to.</p>
-              <a href="#" class="read-more">Read More</a>
+              <a href="javascript:void(0)" class="read-more" onclick="toggleStory('thailand-story')">Read More</a>
             </div>
           </div>
 
@@ -416,8 +457,121 @@
 
         </div>
 
+        <!-- Thailand Full Story (hidden) -->
+        <div id="thailand-story" class="full-story" style="display:none; background:#fff; border-radius:16px; padding:3rem; margin-bottom:3rem; box-shadow:0 2px 20px rgba(44,36,22,0.1); line-height:1.85; color:var(--brown-mid); font-size:1rem;">
+          <h2 style="font-family:var(--font-serif); font-size:1.8rem; color:var(--brown); margin-bottom:0.5rem;">The Thailand Islands That Haven't Been Ruined Yet</h2>
+          <p style="font-size:0.75rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-muted); margin-bottom:2rem;">Thailand · November 2025 · 7 min read</p>
+
+          <p>Let's be honest — Phuket is a shopping mall with a beach. Koh Samui has been swallowed by all-inclusive resorts and Russian menus. Koh Phi Phi? A drunk backpacker theme park. If you're going to Thailand for islands that actually feel like <em>islands</em>, you need to look further.</p>
+
+          <p>I spent three weeks hopping between Thai islands that most tourists skip entirely. Here are the ones that are still worth it.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">Koh Lipe</h3>
+
+          <p>This tiny island in the Andaman Sea, near the Malaysian border, is what Koh Phi Phi looked like 20 years ago. Crystal-clear water, no cars, and beaches that aren't wall-to-wall with sunbeds. The snorkelling straight off Sunrise Beach is better than most paid dive trips I've done. Getting there takes effort — you'll need a speedboat from Pak Bara — but that's exactly what keeps it special.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">Koh Yao Noi</h3>
+
+          <p>Sitting in the middle of Phang Nga Bay, Koh Yao Noi is surrounded by the same dramatic limestone karsts that people pay to see on James Bond Island tours — except here, you wake up to them from your balcony. The island is mostly Muslim fishing communities, the pace is slow, and tourism hasn't taken over. Rent a scooter, eat at the local markets, and watch the sun set over the karsts. That's it. That's the whole plan.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">Koh Kood</h3>
+
+          <p>Koh Kood (or Koh Kut) is Thailand's fourth-largest island, and somehow barely anyone goes there. The waterfalls are real, the mangrove forests are untouched, and the beaches are the kind of empty that makes you think you've made a wrong turn. The trick is that it's far from Bangkok — near the Cambodian border — so most weekend tourists never make it. Perfect.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">Koh Mak</h3>
+
+          <p>Koh Mak is Koh Kood's quieter neighbour. It declared itself a "low carbon destination" and genuinely means it — no jet skis, no big chain hotels, just coconut plantations and rubber trees. If you want to do nothing for three days and feel great about it, Koh Mak is your island.</p>
+
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; color:var(--brown); margin:2rem 0 1rem;">The Takeaway</h3>
+
+          <p>Thailand's islands aren't ruined — you're just going to the wrong ones. Skip the full-moon party islands. Get on a longer boat ride. Go where the Wi-Fi is bad and the water is clear. <strong>That's where Thailand still lives.</strong></p>
+
+          <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--beige-mid);">
+            <a href="javascript:void(0)" class="btn btn-secondary" onclick="toggleStory('thailand-story')">Close Story</a>
+          </div>
+        </div>
+
         <div class="load-more-row">
-          <a href="#" class="btn btn-secondary">Load More Posts</a>
+          <a href="javascript:void(0)" class="btn btn-secondary" id="loadMoreBtn" onclick="loadMorePosts()">Load More Posts</a>
+        </div>
+
+        <!-- Extra posts (hidden by default) -->
+        <div id="morePosts" style="display:none;">
+          <div class="posts-grid" style="margin-top:2rem;">
+
+            <div class="card post-card">
+              <div class="card-img">
+                <img src="images/fitness-weights.jpg" alt="Weightlifting" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="card-body">
+                <div class="post-meta">Fitness · Aug 2025 · 5 min read</div>
+                <h3 class="card-title">How I Stay Consistent With Fitness While Travelling Full-Time</h3>
+                <p class="card-excerpt">The biggest challenge isn't finding a gym — it's keeping your routine when everything around you changes every week. Here's what actually works.</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="card-img">
+                <img src="images/dest-japan.jpg" alt="Japan" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="card-body">
+                <div class="post-meta">Japan · Jul 2025 · 6 min read</div>
+                <h3 class="card-title">Tokyo on a Budget — What I Actually Spent in 7 Days</h3>
+                <p class="card-excerpt">Japan has a reputation for being expensive. I tracked every yen for a week in Tokyo and the total might surprise you.</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="card-img">
+                <img src="images/fitness-mealprep.jpg" alt="Meal prep" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="card-body">
+                <div class="post-meta">Fitness · Jun 2025 · 4 min read</div>
+                <h3 class="card-title">Eating Clean on the Road — My Go-To Meals in Any Country</h3>
+                <p class="card-excerpt">You don't need a kitchen or a meal prep container. Here's how I eat well no matter where I am — from street markets to airport layovers.</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="card-img">
+                <img src="images/dest-philippines.jpg" alt="Philippines" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="card-body">
+                <div class="post-meta">Philippines · May 2025 · 7 min read</div>
+                <h3 class="card-title">Island Hopping in the Philippines — The Route Nobody Talks About</h3>
+                <p class="card-excerpt">Everyone does El Nido to Coron. I went the other way — and found islands with no other tourists, better diving, and half the price.</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="card-img">
+                <img src="images/fitness-ropes.jpg" alt="Workout" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="card-body">
+                <div class="post-meta">Fitness · Apr 2025 · 5 min read</div>
+                <h3 class="card-title">The 20-Minute Hotel Room Workout That Actually Burns</h3>
+                <p class="card-excerpt">No equipment, no excuses. This is the HIIT circuit I do in every hotel room — all you need is a floor and 20 minutes.</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </div>
+
+            <div class="card post-card">
+              <div class="card-img">
+                <img src="images/dest-okinawa.jpg" alt="Okinawa" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
+              </div>
+              <div class="card-body">
+                <div class="post-meta">Japan · Mar 2025 · 6 min read</div>
+                <h3 class="card-title">Okinawa — Where Japanese Culture Meets Tropical Paradise</h3>
+                <p class="card-excerpt">Okinawa feels like a different country. The beaches rival the Caribbean, the food is unlike mainland Japan, and the pace of life is something else entirely.</p>
+                <a href="#" class="read-more">Read More</a>
+              </div>
+            </div>
+
+          </div>
         </div>
 
       </div>
@@ -482,6 +636,26 @@
       btn.textContent = 'Subscribed ✓';
       btn.style.background = 'var(--green)';
       e.target.querySelector('input').value = '';
+    }
+
+    function toggleStory(id) {
+      const story = document.getElementById(id);
+      if (story.style.display === 'none') {
+        story.style.display = 'block';
+        story.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        story.style.display = 'none';
+      }
+    }
+
+    function loadMorePosts() {
+      const morePosts = document.getElementById('morePosts');
+      const btn = document.getElementById('loadMoreBtn');
+      morePosts.style.display = 'block';
+      btn.textContent = 'All Posts Loaded ✓';
+      btn.style.pointerEvents = 'none';
+      btn.style.opacity = '0.5';
+      morePosts.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   </script>
 </body>
