@@ -244,6 +244,7 @@
       .fitness-inner { grid-template-columns: 1fr; gap: 3rem; }
       .timeline { grid-template-columns: 1fr; }
       .timeline::before { display: none; }
+      .fitness-quiz-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
     }
     @media (max-width: 600px) {
       .values-row { grid-template-columns: 1fr; }
@@ -432,6 +433,100 @@
       </div>
     </section>
 
+    <!-- ====== FITNESS QUIZ ====== -->
+    <section style="background:var(--beige-light); padding:5rem 5%;">
+      <div style="max-width:var(--max-width); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start;" class="fitness-quiz-grid">
+
+        <!-- Left: Intro -->
+        <div>
+          <p class="section-label">Your Personalised Plan</p>
+          <h2 class="section-title">Get a fitness plan<br/>built just for you.</h2>
+          <div class="divider"></div>
+          <p class="section-subtitle" style="margin-bottom:1.5rem;">Hey! Just need a few quick things before I build your plan. Fill out the quiz below and I'll personally create a tailored fitness and nutrition package based on your goals, schedule, and lifestyle.</p>
+          <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.7;">Send this over when you can and I'll take it from there.</p>
+          <div style="margin-top:1.5rem;">
+            <img src="images/fitness-weights.jpg" alt="Fitness" style="width:100%; border-radius:12px; max-height:260px; object-fit:cover;" />
+          </div>
+        </div>
+
+        <!-- Right: Quiz Form -->
+        <div style="background:#fff; border-radius:16px; padding:2.5rem; box-shadow:0 2px 16px rgba(44,36,22,0.07);">
+          <p class="section-label" style="margin-bottom:0.5rem;">Wellness Quiz</p>
+          <h3 style="font-family:var(--font-serif); font-size:1.3rem; font-weight:700; color:var(--brown); margin-bottom:1.5rem;">Tell Julie about your goals</h3>
+
+          <form id="fitnessQuiz" onsubmit="handleFitnessQuiz(event)" style="display:flex; flex-direction:column; gap:1.1rem;">
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">What's your main goal?</label>
+              <select name="goal" required style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); background:#fff; outline:none; cursor:pointer;">
+                <option value="" disabled selected>Select your goal</option>
+                <option value="Fat loss">Fat loss</option>
+                <option value="Toning">Toning</option>
+                <option value="Muscle building">Muscle building</option>
+                <option value="General fitness">General fitness</option>
+                <option value="Staying active while travelling">Staying active while travelling</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">How many days/week can you work out & how long per session?</label>
+              <input type="text" name="schedule" required placeholder="e.g. 4 days, 45 mins each" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none;" />
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">What equipment do you have at home?</label>
+              <input type="text" name="equipment" required placeholder="e.g. dumbbells, resistance bands, nothing" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none;" />
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Any injuries or health issues I should know about?</label>
+              <input type="text" name="injuries" placeholder="e.g. bad knee, none" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none;" />
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Besides fish, any foods you don't eat or allergies?</label>
+              <input type="text" name="dietary" placeholder="e.g. no dairy, vegetarian, none" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none;" />
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Do you prefer simple meals or are you okay cooking?</label>
+              <select name="cooking" required style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); background:#fff; outline:none; cursor:pointer;">
+                <option value="" disabled selected>Select preference</option>
+                <option value="Keep it simple">Keep it simple — minimal cooking</option>
+                <option value="I enjoy cooking">I enjoy cooking</option>
+                <option value="Mix of both">Mix of both</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">What does your eating look like now? (meals/snacks)</label>
+              <textarea name="currentEating" rows="2" placeholder="e.g. I skip breakfast, eat out for lunch, snack a lot at night..." style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none; resize:vertical;"></textarea>
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Anything you struggle with most when staying consistent?</label>
+              <textarea name="struggles" rows="2" placeholder="e.g. motivation, time, eating healthy on the road..." style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none; resize:vertical;"></textarea>
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Your Name</label>
+              <input type="text" name="name" required placeholder="Your name" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none;" />
+            </div>
+
+            <div>
+              <label style="font-size:0.68rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--brown); display:block; margin-bottom:0.4rem;">Your Email</label>
+              <input type="email" name="email" required placeholder="your@email.com" style="width:100%; padding:0.75rem 1rem; border:1.5px solid var(--beige-mid); border-radius:8px; font-family:var(--font-sans); font-size:0.88rem; color:var(--brown); outline:none;" />
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; text-align:center; margin-top:0.5rem;">Send My Answers to Julie</button>
+          </form>
+          <p id="quizSuccess" style="display:none; text-align:center; color:var(--green); font-weight:700; font-size:0.88rem; margin-top:1.25rem;">Thanks! Julie will build your personalised plan and get back to you soon.</p>
+        </div>
+
+      </div>
+    </section>
+
     <!-- ====== CTA ====== -->
     <section class="about-cta">
       <div class="about-cta-inner">
@@ -483,5 +578,30 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>
+    function handleFitnessQuiz(e) {
+      e.preventDefault();
+      const f = e.target;
+      const name = f.name.value;
+      const email = f.email.value;
+      const subject = encodeURIComponent('Fitness Quiz from ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n\n' +
+        '--- FITNESS QUIZ ANSWERS ---\n\n' +
+        '1. Main goal: ' + f.goal.value + '\n' +
+        '2. Workout schedule: ' + f.schedule.value + '\n' +
+        '3. Equipment at home: ' + f.equipment.value + '\n' +
+        '4. Injuries/health issues: ' + (f.injuries.value || 'None') + '\n' +
+        '5. Dietary restrictions/allergies: ' + (f.dietary.value || 'None') + '\n' +
+        '6. Cooking preference: ' + f.cooking.value + '\n' +
+        '7. Current eating habits: ' + (f.currentEating.value || 'Not specified') + '\n' +
+        '8. Biggest struggle with consistency: ' + (f.struggles.value || 'Not specified')
+      );
+      window.location.href = 'mailto:julietterabahi@gmail.com?subject=' + subject + '&body=' + body;
+      f.style.display = 'none';
+      document.getElementById('quizSuccess').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
